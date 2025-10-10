@@ -1,7 +1,75 @@
-# LaserGRBL [![Donation](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?business=4WQX8HUBXRVUU&no_recurring=0&item_name=LaserGRBL&currency_code=EUR)
-Official website [http://lasergrbl.com](http://lasergrbl.com)
+# LaserGRBL for macOS [![Status](https://img.shields.io/badge/Status-In%20Development-orange.svg)](https://github.com) [![Original](https://img.shields.io/badge/Original-Windows%20App-blue.svg)](https://github.com/arkypita/LaserGRBL)
 
-LaserGRBL is a Windows GUI for [GRBL](https://github.com/gnea/grbl/wiki). Unlike other GUI LaserGRBL it is specifically developed for use with laser cutter and engraver. In order to use all of LaserGRBL feature, your engraver must supports laser power modulation through gcode "S" command. LaserGRBL is compatible with [Grbl v0.9](https://github.com/grbl/grbl/) and [Grbl v1.1](https://github.com/gnea/grbl/)
+**🚧 This is a macOS native conversion currently in development 🚧**
+
+This project is a native macOS port of [LaserGRBL](https://github.com/arkypita/LaserGRBL) built with Swift/SwiftUI for Apple Silicon (M1/M2/M3) Macs. It is being developed as a separate fork specifically for macOS users.
+
+**Original LaserGRBL:** [http://lasergrbl.com](http://lasergrbl.com) | [Windows Version](https://github.com/arkypita/LaserGRBL)
+
+LaserGRBL is a GUI for [GRBL](https://github.com/gnea/grbl/wiki) specifically developed for laser cutters and engravers. It supports laser power modulation through gcode "S" commands and is compatible with [Grbl v0.9](https://github.com/grbl/grbl/) and [Grbl v1.1](https://github.com/gnea/grbl/)
+
+## Development Status
+
+**📊 Current Progress: 23% Complete** | **📍 Phase: 1 of 5** | **✅ Phase 1: COMPLETE**
+
+👉 **[View Detailed Implementation Status](IMPLEMENTATION_STATUS.md)**
+
+### Phase 1: G-Code Loading & Export ✅ COMPLETE
+- ✅ Load and parse G-code files
+- ✅ Display and edit G-code
+- ✅ Export with custom headers/footers
+- ✅ 2D preview visualization
+- ✅ Bounding box calculation
+- ✅ Time estimation
+
+**Phase 1 is fully implemented!** All core files have been created in `LaserGRBL-macOS/` directory.  
+See [QUICKSTART.md](LaserGRBL-macOS/QUICKSTART.md) to build and run the app in ~10 minutes.
+
+### Phase 2: USB Serial Connectivity (Next)
+- [ ] Serial port communication via ORSSerialPort
+- [ ] GRBL streaming protocol implementation
+- [ ] Real-time status display and monitoring
+- [ ] Command queue visualization
+
+### Phase 3: Image Import & Raster Conversion
+- [ ] JPG/PNG/BMP image import
+- [ ] Grayscale conversion algorithms
+- [ ] Line-by-line raster generation
+- [ ] 1-bit dithering
+
+### Phase 4: SVG Vector Import
+- [ ] SVG file parsing with Core Graphics
+- [ ] Path to G-code conversion (Bézier curves)
+- [ ] Layer and color filtering
+
+### Phase 5: Image Vectorization
+- [ ] Bitmap to vector path conversion (Potrace port)
+- [ ] Edge detection and curve fitting
+- [ ] Optimized toolpath generation
+
+---
+
+## Quick Start
+
+**Want to try it now?** The Phase 1 implementation is complete!
+
+```bash
+cd LaserGRBL-macOS/
+# Read QUICKSTART.md and follow the 3-step setup
+open QUICKSTART.md
+```
+
+**Files Ready:**
+- ✅ All Swift source files created
+- ✅ Project structure complete
+- ✅ Sample G-code files included
+- ✅ Full documentation provided
+
+**Build Time:** ~10 minutes to first launch
+
+---
+
+## Original LaserGRBL (Windows)
 
 All downloads available at https://github.com/arkypita/LaserGRBL/releases
 
