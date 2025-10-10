@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import Combine
 import SwiftUI
+import AppKit
 import UniformTypeIdentifiers
 
 class GCodeFileManager: ObservableObject {
