@@ -66,11 +66,18 @@ class GCodeFileManager: ObservableObject {
         }
     }
     
-    /// Save the current file
+    /// Save the current file to its existing location
     func saveFile() {
         guard let file = currentFile else { return }
         
-        if let existingPath = file.filePath {
+        guard let existingPath = file.filePath else {
+            // No existing path, treat as Save As
+            saveFileAs()
+            return
+        }
+        
+        // Check if the file is in a writable location
+        if isWritableLocation(existingPath) {
             // Save to existing location
             do {
                 try file.save(to: existingPath)
@@ -78,8 +85,22 @@ class GCodeFileManager: ObservableObject {
                 self.errorMessage = "Failed to save file: \(error.localizedDescription)"
             }
         } else {
-            // Show save panel for new file
+            // File is in read-only location (like sample files), show Save As
             saveFileAs()
+        }
+    }
+    
+    /// Check if a file location is writable
+    private func isWritableLocation(_ url: URL) -> Bool {
+        // Check if the parent directory is writable
+        let parentDir = url.deletingLastPathComponent()
+        
+        // Check if we can write to the parent directory
+        do {
+            _ = try parentDir.resourceValues(forKeys: [.isWritableKey])
+            return parentDir.resourceValues(forKeys: [.isWritableKey]).isWritable ?? false
+        } catch {
+            return false
         }
     }
     
@@ -92,13 +113,14 @@ class GCodeFileManager: ObservableObject {
         panel.nameFieldStringValue = file.fileName + ".gcode"
         panel.message = "Save G-code file"
         
-        panel.begin { [weak self] response in
+        Task { @MainActor in
+            let response = panel.runModal()
             guard response == .OK, let url = panel.url else { return }
             
             do {
                 try file.save(to: url)
             } catch {
-                self?.errorMessage = "Failed to save file: \(error.localizedDescription)"
+                self.errorMessage = "Failed to save file: \(error.localizedDescription)"
             }
         }
     }

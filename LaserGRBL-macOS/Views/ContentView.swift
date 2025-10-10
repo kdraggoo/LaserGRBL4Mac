@@ -22,12 +22,13 @@ struct ContentView: View {
                 HSplitView {
                     // Left: Command list and editor
                     GCodeEditorView(file: file, selectedCommandId: $selectedCommandId)
-                        .frame(minWidth: 400)
+                        .frame(minWidth: 300, idealWidth: 400)
                     
                     // Right: Preview
                     GCodePreviewView(file: file, selectedCommandId: $selectedCommandId)
-                        .frame(minWidth: 400)
+                        .frame(minWidth: 300, idealWidth: 400)
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 // Welcome screen
                 WelcomeView()

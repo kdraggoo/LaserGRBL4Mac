@@ -27,8 +27,14 @@ struct LaserGRBLApp: App {
             }
             
             CommandGroup(after: .newItem) {
-                Button("Save G-Code As...") {
+                Button("Save") {
                     fileManager.saveFile()
+                }
+                .keyboardShortcut("s", modifiers: .command)
+                .disabled(fileManager.currentFile == nil)
+                
+                Button("Save As...") {
+                    fileManager.saveFileAs()
                 }
                 .keyboardShortcut("s", modifiers: [.command, .shift])
                 .disabled(fileManager.currentFile == nil)

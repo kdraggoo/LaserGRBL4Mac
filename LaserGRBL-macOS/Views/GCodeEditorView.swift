@@ -119,9 +119,9 @@ struct GCodeCommandRow: View {
         case .motion(.arcCW), .motion(.arcCCW):
             return "arrow.circlepath"
         case .laser(.on), .laser(.onDynamic):
-            return "laser.burst.fill"
+            return "bolt.fill"
         case .laser(.off):
-            return "laser.burst"
+            return "bolt"
         case .coordinate:
             return "scope"
         case .units:
