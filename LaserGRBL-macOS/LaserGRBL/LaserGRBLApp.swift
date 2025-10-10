@@ -11,7 +11,7 @@ import SwiftUI
 @main
 struct LaserGRBLApp: App {
     @StateObject private var fileManager = GCodeFileManager()
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -25,14 +25,14 @@ struct LaserGRBLApp: App {
                 }
                 .keyboardShortcut("o", modifiers: .command)
             }
-            
+
             CommandGroup(after: .newItem) {
                 Button("Save") {
                     fileManager.saveFile()
                 }
                 .keyboardShortcut("s", modifiers: .command)
                 .disabled(fileManager.currentFile == nil)
-                
+
                 Button("Save As...") {
                     fileManager.saveFileAs()
                 }
@@ -42,4 +42,3 @@ struct LaserGRBLApp: App {
         }
     }
 }
-
