@@ -1,0 +1,643 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A80BCD52E99652C00776C23 /* GCodeCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BCCD2E99652C00776C23 /* GCodeCommand.swift */; };
+		0A80BCD62E99652C00776C23 /* GCodeFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BCCB2E99652C00776C23 /* GCodeFileManager.swift */; };
+		0A80BCD72E99652C00776C23 /* LaserGRBLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BCCA2E99652C00776C23 /* LaserGRBLApp.swift */; };
+		0A80BCD82E99652C00776C23 /* GCodeFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BCCE2E99652C00776C23 /* GCodeFile.swift */; };
+		0A80BCD92E99652C00776C23 /* GCodeEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BCD22E99652C00776C23 /* GCodeEditorView.swift */; };
+		0A80BCDA2E99652C00776C23 /* GCodePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BCD32E99652C00776C23 /* GCodePreviewView.swift */; };
+		0A80BCDB2E99652C00776C23 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BCD02E99652C00776C23 /* ContentView.swift */; };
+		0A80BCDC2E99652C00776C23 /* FileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BCD12E99652C00776C23 /* FileInfoView.swift */; };
+		0A80BCDD2E99652C00776C23 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80BCC82E99652C00776C23 /* Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0A80BCAC2E9964E600776C23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A80BC962E9964E300776C23 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A80BC9D2E9964E300776C23;
+			remoteInfo = LaserGRBL;
+		};
+		0A80BCB62E9964E600776C23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A80BC962E9964E300776C23 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A80BC9D2E9964E300776C23;
+			remoteInfo = LaserGRBL;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0A80BC9E2E9964E300776C23 /* LaserGRBL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaserGRBL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A80BCAB2E9964E600776C23 /* LaserGRBLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaserGRBLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A80BCB52E9964E600776C23 /* LaserGRBLUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaserGRBLUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A80BCC82E99652C00776C23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A80BCC92E99652C00776C23 /* LaserGRBL.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LaserGRBL.entitlements; sourceTree = "<group>"; };
+		0A80BCCA2E99652C00776C23 /* LaserGRBLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserGRBLApp.swift; sourceTree = "<group>"; };
+		0A80BCCB2E99652C00776C23 /* GCodeFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCodeFileManager.swift; sourceTree = "<group>"; };
+		0A80BCCD2E99652C00776C23 /* GCodeCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCodeCommand.swift; sourceTree = "<group>"; };
+		0A80BCCE2E99652C00776C23 /* GCodeFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCodeFile.swift; sourceTree = "<group>"; };
+		0A80BCD02E99652C00776C23 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0A80BCD12E99652C00776C23 /* FileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoView.swift; sourceTree = "<group>"; };
+		0A80BCD22E99652C00776C23 /* GCodeEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCodeEditorView.swift; sourceTree = "<group>"; };
+		0A80BCD32E99652C00776C23 /* GCodePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCodePreviewView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0A80BCA02E9964E300776C23 /* LaserGRBL */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = LaserGRBL;
+			sourceTree = "<group>";
+		};
+		0A80BCAE2E9964E600776C23 /* LaserGRBLTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = LaserGRBLTests;
+			sourceTree = "<group>";
+		};
+		0A80BCB82E9964E600776C23 /* LaserGRBLUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = LaserGRBLUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0A80BC9B2E9964E300776C23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A80BCA82E9964E600776C23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A80BCB22E9964E600776C23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A80BC952E9964E300776C23 = {
+			isa = PBXGroup;
+			children = (
+				0A80BCA02E9964E300776C23 /* LaserGRBL */,
+				0A80BCAE2E9964E600776C23 /* LaserGRBLTests */,
+				0A80BCB82E9964E600776C23 /* LaserGRBLUITests */,
+				0A80BC9F2E9964E300776C23 /* Products */,
+				0A80BCC82E99652C00776C23 /* Info.plist */,
+				0A80BCC92E99652C00776C23 /* LaserGRBL.entitlements */,
+				0A80BCCA2E99652C00776C23 /* LaserGRBLApp.swift */,
+				0A80BCCC2E99652C00776C23 /* Managers */,
+				0A80BCCF2E99652C00776C23 /* Models */,
+				0A80BCD42E99652C00776C23 /* Views */,
+			);
+			sourceTree = "<group>";
+		};
+		0A80BC9F2E9964E300776C23 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0A80BC9E2E9964E300776C23 /* LaserGRBL.app */,
+				0A80BCAB2E9964E600776C23 /* LaserGRBLTests.xctest */,
+				0A80BCB52E9964E600776C23 /* LaserGRBLUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0A80BCCC2E99652C00776C23 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0A80BCCB2E99652C00776C23 /* GCodeFileManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		0A80BCCF2E99652C00776C23 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A80BCCD2E99652C00776C23 /* GCodeCommand.swift */,
+				0A80BCCE2E99652C00776C23 /* GCodeFile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0A80BCD42E99652C00776C23 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0A80BCD02E99652C00776C23 /* ContentView.swift */,
+				0A80BCD12E99652C00776C23 /* FileInfoView.swift */,
+				0A80BCD22E99652C00776C23 /* GCodeEditorView.swift */,
+				0A80BCD32E99652C00776C23 /* GCodePreviewView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0A80BC9D2E9964E300776C23 /* LaserGRBL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A80BCBF2E9964E600776C23 /* Build configuration list for PBXNativeTarget "LaserGRBL" */;
+			buildPhases = (
+				0A80BC9A2E9964E300776C23 /* Sources */,
+				0A80BC9B2E9964E300776C23 /* Frameworks */,
+				0A80BC9C2E9964E300776C23 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				0A80BCA02E9964E300776C23 /* LaserGRBL */,
+			);
+			name = LaserGRBL;
+			packageProductDependencies = (
+			);
+			productName = LaserGRBL;
+			productReference = 0A80BC9E2E9964E300776C23 /* LaserGRBL.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0A80BCAA2E9964E600776C23 /* LaserGRBLTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A80BCC22E9964E600776C23 /* Build configuration list for PBXNativeTarget "LaserGRBLTests" */;
+			buildPhases = (
+				0A80BCA72E9964E600776C23 /* Sources */,
+				0A80BCA82E9964E600776C23 /* Frameworks */,
+				0A80BCA92E9964E600776C23 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A80BCAD2E9964E600776C23 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0A80BCAE2E9964E600776C23 /* LaserGRBLTests */,
+			);
+			name = LaserGRBLTests;
+			packageProductDependencies = (
+			);
+			productName = LaserGRBLTests;
+			productReference = 0A80BCAB2E9964E600776C23 /* LaserGRBLTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0A80BCB42E9964E600776C23 /* LaserGRBLUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A80BCC52E9964E600776C23 /* Build configuration list for PBXNativeTarget "LaserGRBLUITests" */;
+			buildPhases = (
+				0A80BCB12E9964E600776C23 /* Sources */,
+				0A80BCB22E9964E600776C23 /* Frameworks */,
+				0A80BCB32E9964E600776C23 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A80BCB72E9964E600776C23 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0A80BCB82E9964E600776C23 /* LaserGRBLUITests */,
+			);
+			name = LaserGRBLUITests;
+			packageProductDependencies = (
+			);
+			productName = LaserGRBLUITests;
+			productReference = 0A80BCB52E9964E600776C23 /* LaserGRBLUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0A80BC962E9964E300776C23 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					0A80BC9D2E9964E300776C23 = {
+						CreatedOnToolsVersion = 26.0.1;
+					};
+					0A80BCAA2E9964E600776C23 = {
+						CreatedOnToolsVersion = 26.0.1;
+						TestTargetID = 0A80BC9D2E9964E300776C23;
+					};
+					0A80BCB42E9964E600776C23 = {
+						CreatedOnToolsVersion = 26.0.1;
+						TestTargetID = 0A80BC9D2E9964E300776C23;
+					};
+				};
+			};
+			buildConfigurationList = 0A80BC992E9964E300776C23 /* Build configuration list for PBXProject "LaserGRBL" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0A80BC952E9964E300776C23;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 0A80BC9F2E9964E300776C23 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0A80BC9D2E9964E300776C23 /* LaserGRBL */,
+				0A80BCAA2E9964E600776C23 /* LaserGRBLTests */,
+				0A80BCB42E9964E600776C23 /* LaserGRBLUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0A80BC9C2E9964E300776C23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A80BCDD2E99652C00776C23 /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A80BCA92E9964E600776C23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A80BCB32E9964E600776C23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0A80BC9A2E9964E300776C23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A80BCD52E99652C00776C23 /* GCodeCommand.swift in Sources */,
+				0A80BCD62E99652C00776C23 /* GCodeFileManager.swift in Sources */,
+				0A80BCD72E99652C00776C23 /* LaserGRBLApp.swift in Sources */,
+				0A80BCD82E99652C00776C23 /* GCodeFile.swift in Sources */,
+				0A80BCD92E99652C00776C23 /* GCodeEditorView.swift in Sources */,
+				0A80BCDA2E99652C00776C23 /* GCodePreviewView.swift in Sources */,
+				0A80BCDB2E99652C00776C23 /* ContentView.swift in Sources */,
+				0A80BCDC2E99652C00776C23 /* FileInfoView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A80BCA72E9964E600776C23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A80BCB12E9964E600776C23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0A80BCAD2E9964E600776C23 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0A80BC9D2E9964E300776C23 /* LaserGRBL */;
+			targetProxy = 0A80BCAC2E9964E600776C23 /* PBXContainerItemProxy */;
+		};
+		0A80BCB72E9964E600776C23 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0A80BC9D2E9964E300776C23 /* LaserGRBL */;
+			targetProxy = 0A80BCB62E9964E600776C23 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0A80BCBD2E9964E600776C23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = LEUL2VBPN8;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0A80BCBE2E9964E600776C23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = LEUL2VBPN8;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		0A80BCC02E9964E600776C23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LEUL2VBPN8;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dksolutions.LaserGRBL;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		0A80BCC12E9964E600776C23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LEUL2VBPN8;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dksolutions.LaserGRBL;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		0A80BCC32E9964E600776C23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LEUL2VBPN8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dksolutions.LaserGRBLTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LaserGRBL.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LaserGRBL";
+			};
+			name = Debug;
+		};
+		0A80BCC42E9964E600776C23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LEUL2VBPN8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dksolutions.LaserGRBLTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LaserGRBL.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LaserGRBL";
+			};
+			name = Release;
+		};
+		0A80BCC62E9964E600776C23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LEUL2VBPN8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dksolutions.LaserGRBLUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = LaserGRBL;
+			};
+			name = Debug;
+		};
+		0A80BCC72E9964E600776C23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LEUL2VBPN8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dksolutions.LaserGRBLUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = LaserGRBL;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0A80BC992E9964E300776C23 /* Build configuration list for PBXProject "LaserGRBL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A80BCBD2E9964E600776C23 /* Debug */,
+				0A80BCBE2E9964E600776C23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A80BCBF2E9964E600776C23 /* Build configuration list for PBXNativeTarget "LaserGRBL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A80BCC02E9964E600776C23 /* Debug */,
+				0A80BCC12E9964E600776C23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A80BCC22E9964E600776C23 /* Build configuration list for PBXNativeTarget "LaserGRBLTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A80BCC32E9964E600776C23 /* Debug */,
+				0A80BCC42E9964E600776C23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A80BCC52E9964E600776C23 /* Build configuration list for PBXNativeTarget "LaserGRBLUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A80BCC62E9964E600776C23 /* Debug */,
+				0A80BCC72E9964E600776C23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0A80BC962E9964E300776C23 /* Project object */;
+}
