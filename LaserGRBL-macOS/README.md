@@ -144,6 +144,8 @@ dependencies: [
 - Time estimation is approximate
 - No undo/redo support yet
 
+For detailed bug reports and workarounds, see [KNOWN_ISSUES.md](KNOWN_ISSUES.md).
+
 ## Contributing
 
 This is a port of the Windows LaserGRBL application. Core algorithms and logic are adapted from:

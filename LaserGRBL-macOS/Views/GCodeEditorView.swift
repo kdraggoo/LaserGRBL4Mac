@@ -55,6 +55,9 @@ struct GCodeEditorView: View {
                 .onAppear {
                     editingText = file.asText
                 }
+                .onChange(of: file.fileName) { _ in
+                    editingText = file.asText
+                }
             }
         }
     }
