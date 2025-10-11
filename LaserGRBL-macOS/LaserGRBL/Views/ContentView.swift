@@ -9,37 +9,67 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var fileManager: GCodeFileManager
+    @EnvironmentObject var serialManager: SerialPortManager
+    @EnvironmentObject var grblController: GrblController
+    
     @State private var selectedCommandId: UUID?
     @State private var showFileInfo = false
+    @State private var selectedTab: MainTab = .gcode
+
+    enum MainTab: String, CaseIterable {
+        case gcode = "G-Code"
+        case control = "Control"
+        case console = "Console"
+        
+        var icon: String {
+            switch self {
+            case .gcode: return "doc.text"
+            case .control: return "gamecontroller"
+            case .console: return "terminal"
+            }
+        }
+    }
 
     var body: some View {
         NavigationSplitView {
-            // Sidebar - File list and controls
-            SidebarView(showFileInfo: $showFileInfo)
+            // Sidebar - Connection and file controls
+            VStack(spacing: 0) {
+                // Connection panel
+                ConnectionView(
+                    serialManager: serialManager,
+                    grblController: grblController
+                )
+                
+                Divider()
+                
+                // File controls
+                SidebarView(showFileInfo: $showFileInfo)
+            }
+            .frame(minWidth: 300, maxWidth: 350)
         } detail: {
-            // Main content area
-            if let file = fileManager.currentFile {
-                HSplitView {
-                    // Left: Command list and editor
-                    GCodeEditorView(file: file, selectedCommandId: $selectedCommandId)
-                        .frame(minWidth: 300, idealWidth: 400)
-
-                    // Right: Preview
-                    GCodePreviewView(file: file, selectedCommandId: $selectedCommandId)
-                        .frame(minWidth: 300, idealWidth: 400)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .onAppear {
-                    print("📁 ContentView: File loaded, showing GCodePreviewView - File: \(file.fileName)")
-                }
-            } else {
-                // Welcome screen
-                WelcomeView()
-                    .onAppear {
-                        print("📁 ContentView: No file loaded, showing WelcomeView")
-                        print("📁 ContentView: fileManager.currentFile is nil")
-                        print("📁 ContentView: fileManager.isLoading = \(fileManager.isLoading)")
+            // Main content area with tabs
+            VStack(spacing: 0) {
+                // Tab bar
+                Picker("View", selection: $selectedTab) {
+                    ForEach(MainTab.allCases, id: \.self) { tab in
+                        Label(tab.rawValue, systemImage: tab.icon).tag(tab)
                     }
+                }
+                .pickerStyle(.segmented)
+                .padding()
+                .background(Color(NSColor.controlBackgroundColor))
+                
+                Divider()
+                
+                // Tab content
+                switch selectedTab {
+                case .gcode:
+                    gcodeTabView
+                case .control:
+                    controlTabView
+                case .console:
+                    consoleTabView
+                }
             }
         }
         .sheet(isPresented: $showFileInfo) {
@@ -59,6 +89,40 @@ struct ContentView: View {
         } message: {
             Text(fileManager.errorMessage ?? "")
         }
+    }
+    
+    // MARK: - Tab Views
+    
+    private var gcodeTabView: some View {
+        Group {
+            if let file = fileManager.currentFile {
+                HSplitView {
+                    // Left: Command list and editor
+                    GCodeEditorView(file: file, selectedCommandId: $selectedCommandId)
+                        .frame(minWidth: 300, idealWidth: 400)
+                        .id(file.id) // Force recreation when file changes
+
+                    // Right: Preview
+                    GCodePreviewView(file: file, selectedCommandId: $selectedCommandId)
+                        .frame(minWidth: 300, idealWidth: 400)
+                        .id(file.id) // Force recreation when file changes
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                // Welcome screen
+                WelcomeView()
+            }
+        }
+    }
+    
+    private var controlTabView: some View {
+        ControlPanelView(grblController: grblController)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    private var consoleTabView: some View {
+        ConsoleView(grblController: grblController)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
@@ -130,10 +194,10 @@ struct SidebarView: View {
             // Status
             VStack(alignment: .leading, spacing: 4) {
                 Divider()
-                Text("Phase 1: MVP")
+                Text("Phase 2: Complete")
                     .font(.caption)
                     .foregroundColor(.secondary)
-                Text("G-Code Loading & Export")
+                Text("USB Serial + GRBL Control")
                     .font(.caption2)
                     .foregroundColor(.secondary)
             }
@@ -199,14 +263,18 @@ struct WelcomeView: View {
                 .frame(height: 40)
 
             VStack(spacing: 8) {
-                Text("🚧 Development Status")
+                Text("✅ Development Status")
                     .font(.headline)
 
-                ProgressView(value: 0.15) {
-                    Text("Phase 1: G-Code Loading & Export")
+                ProgressView(value: 0.40) {
+                    Text("Phase 2: USB Serial + GRBL Control")
                         .font(.caption)
                 }
                 .frame(width: 300)
+                
+                Text("Connect to your machine using the sidebar")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

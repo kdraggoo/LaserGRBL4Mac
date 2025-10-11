@@ -16,6 +16,14 @@
 		0A80BCDB2E99652C00776C23 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BCD02E99652C00776C23 /* ContentView.swift */; };
 		0A80BCDC2E99652C00776C23 /* FileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BCD12E99652C00776C23 /* FileInfoView.swift */; };
 		0A80BCDD2E99652C00776C23 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80BCC82E99652C00776C23 /* Info.plist */; };
+		0A80BD002E99E61200776C23 /* ORSSerial in Frameworks */ = {isa = PBXBuildFile; productRef = 0A80BCFF2E99E61200776C23 /* ORSSerial */; };
+		0A80BD032E99EBB200776C23 /* GrblController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD012E99EBB200776C23 /* GrblController.swift */; };
+		0A80BD042E99EBB200776C23 /* SerialPortManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD022E99EBB200776C23 /* SerialPortManager.swift */; };
+		0A80BD072E99EBC000776C23 /* GrblResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD062E99EBC000776C23 /* GrblResponse.swift */; };
+		0A80BD082E99EBC000776C23 /* GrblCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD052E99EBC000776C23 /* GrblCommand.swift */; };
+		0A80BD0C2E99EBD200776C23 /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD0A2E99EBD200776C23 /* ConsoleView.swift */; };
+		0A80BD0D2E99EBD200776C23 /* ConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD092E99EBD200776C23 /* ConnectionView.swift */; };
+		0A80BD0E2E99EBD200776C23 /* ControlPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD0B2E99EBD200776C23 /* ControlPanelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +57,13 @@
 		0A80BCD12E99652C00776C23 /* FileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoView.swift; sourceTree = "<group>"; };
 		0A80BCD22E99652C00776C23 /* GCodeEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCodeEditorView.swift; sourceTree = "<group>"; };
 		0A80BCD32E99652C00776C23 /* GCodePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCodePreviewView.swift; sourceTree = "<group>"; };
+		0A80BD012E99EBB200776C23 /* GrblController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrblController.swift; sourceTree = "<group>"; };
+		0A80BD022E99EBB200776C23 /* SerialPortManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialPortManager.swift; sourceTree = "<group>"; };
+		0A80BD052E99EBC000776C23 /* GrblCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrblCommand.swift; sourceTree = "<group>"; };
+		0A80BD062E99EBC000776C23 /* GrblResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrblResponse.swift; sourceTree = "<group>"; };
+		0A80BD092E99EBD200776C23 /* ConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionView.swift; sourceTree = "<group>"; };
+		0A80BD0A2E99EBD200776C23 /* ConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleView.swift; sourceTree = "<group>"; };
+		0A80BD0B2E99EBD200776C23 /* ControlPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -74,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A80BD002E99E61200776C23 /* ORSSerial in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +139,8 @@
 		0A80BCCC2E99652C00776C23 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				0A80BD012E99EBB200776C23 /* GrblController.swift */,
+				0A80BD022E99EBB200776C23 /* SerialPortManager.swift */,
 				0A80BCCB2E99652C00776C23 /* GCodeFileManager.swift */,
 			);
 			path = Managers;
@@ -131,6 +149,8 @@
 		0A80BCCF2E99652C00776C23 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0A80BD052E99EBC000776C23 /* GrblCommand.swift */,
+				0A80BD062E99EBC000776C23 /* GrblResponse.swift */,
 				0A80BCCD2E99652C00776C23 /* GCodeCommand.swift */,
 				0A80BCCE2E99652C00776C23 /* GCodeFile.swift */,
 			);
@@ -140,6 +160,9 @@
 		0A80BCD42E99652C00776C23 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0A80BD092E99EBD200776C23 /* ConnectionView.swift */,
+				0A80BD0A2E99EBD200776C23 /* ConsoleView.swift */,
+				0A80BD0B2E99EBD200776C23 /* ControlPanelView.swift */,
 				0A80BCD02E99652C00776C23 /* ContentView.swift */,
 				0A80BCD12E99652C00776C23 /* FileInfoView.swift */,
 				0A80BCD22E99652C00776C23 /* GCodeEditorView.swift */,
@@ -168,6 +191,7 @@
 			);
 			name = LaserGRBL;
 			packageProductDependencies = (
+				0A80BCFF2E99E61200776C23 /* ORSSerial */,
 			);
 			productName = LaserGRBL;
 			productReference = 0A80BC9E2E9964E300776C23 /* LaserGRBL.app */;
@@ -251,6 +275,9 @@
 			);
 			mainGroup = 0A80BC952E9964E300776C23;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0A80BCFE2E99E61200776C23 /* XCRemoteSwiftPackageReference "ORSSerialPort" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0A80BC9F2E9964E300776C23 /* Products */;
 			projectDirPath = "";
@@ -294,12 +321,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A80BCD52E99652C00776C23 /* GCodeCommand.swift in Sources */,
+				0A80BD032E99EBB200776C23 /* GrblController.swift in Sources */,
+				0A80BD042E99EBB200776C23 /* SerialPortManager.swift in Sources */,
 				0A80BCD62E99652C00776C23 /* GCodeFileManager.swift in Sources */,
 				0A80BCD72E99652C00776C23 /* LaserGRBLApp.swift in Sources */,
+				0A80BD072E99EBC000776C23 /* GrblResponse.swift in Sources */,
+				0A80BD082E99EBC000776C23 /* GrblCommand.swift in Sources */,
 				0A80BCD82E99652C00776C23 /* GCodeFile.swift in Sources */,
 				0A80BCD92E99652C00776C23 /* GCodeEditorView.swift in Sources */,
 				0A80BCDA2E99652C00776C23 /* GCodePreviewView.swift in Sources */,
 				0A80BCDB2E99652C00776C23 /* ContentView.swift in Sources */,
+				0A80BD0C2E99EBD200776C23 /* ConsoleView.swift in Sources */,
+				0A80BD0D2E99EBD200776C23 /* ConnectionView.swift in Sources */,
+				0A80BD0E2E99EBD200776C23 /* ControlPanelView.swift in Sources */,
 				0A80BCDC2E99652C00776C23 /* FileInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,6 +493,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LaserGRBL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -467,7 +502,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readwrite;
-				CODE_SIGN_ENTITLEMENTS = LaserGRBL.entitlements;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -492,6 +526,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LaserGRBL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -500,7 +535,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readwrite;
-				CODE_SIGN_ENTITLEMENTS = LaserGRBL.entitlements;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -640,6 +674,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0A80BCFE2E99E61200776C23 /* XCRemoteSwiftPackageReference "ORSSerialPort" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/armadsen/ORSSerialPort";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0A80BCFF2E99E61200776C23 /* ORSSerial */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A80BCFE2E99E61200776C23 /* XCRemoteSwiftPackageReference "ORSSerialPort" */;
+			productName = ORSSerial;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0A80BC962E9964E300776C23 /* Project object */;
 }

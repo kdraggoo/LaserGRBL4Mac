@@ -162,7 +162,6 @@ class GCodeFile: ObservableObject, Identifiable {
 
         var currentX: Double = 0
         var currentY: Double = 0
-        var currentZ: Double = 0
         var currentFeedRate: Double = 1000  // Default feed rate
         var totalTime: TimeInterval = 0
 
@@ -179,7 +178,6 @@ class GCodeFile: ObservableObject, Identifiable {
                 maxY = max(maxY, y)
             }
             if let z = command.z {
-                currentZ = z
                 if minZ == nil { minZ = z } else { minZ = min(minZ!, z) }
                 if maxZ == nil { maxZ = z } else { maxZ = max(maxZ!, z) }
             }
