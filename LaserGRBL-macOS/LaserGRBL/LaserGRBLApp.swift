@@ -11,12 +11,25 @@ import SwiftUI
 @main
 struct LaserGRBLApp: App {
     @StateObject private var fileManager = GCodeFileManager()
+    @StateObject private var serialManager = SerialPortManager()
+    @StateObject private var grblController: GrblController
     
+    init() {
+        // Initialize serial manager first
+        let serial = SerialPortManager()
+        _serialManager = StateObject(wrappedValue: serial)
+        
+        // Initialize GRBL controller with serial manager
+        _grblController = StateObject(wrappedValue: GrblController(serialManager: serial))
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(fileManager)
-                .frame(minWidth: 900, minHeight: 600)
+                .environmentObject(serialManager)
+                .environmentObject(grblController)
+                .frame(minWidth: 1200, minHeight: 700)
         }
         .commands {
             CommandGroup(replacing: .newItem) {
@@ -25,14 +38,14 @@ struct LaserGRBLApp: App {
                 }
                 .keyboardShortcut("o", modifiers: .command)
             }
-            
+
             CommandGroup(after: .newItem) {
                 Button("Save") {
                     fileManager.saveFile()
                 }
                 .keyboardShortcut("s", modifiers: .command)
                 .disabled(fileManager.currentFile == nil)
-                
+
                 Button("Save As...") {
                     fileManager.saveFileAs()
                 }
@@ -42,4 +55,3 @@ struct LaserGRBLApp: App {
         }
     }
 }
-

@@ -12,21 +12,21 @@ struct GCodeEditorView: View {
     @Binding var selectedCommandId: UUID?
     @State private var editMode: EditMode = .list
     @State private var editingText: String = ""
-    
+
     enum EditMode {
         case list
         case text
     }
-    
+
     var body: some View {
         VStack(spacing: 0) {
             // Toolbar
             HStack {
                 Text("G-Code")
                     .font(.headline)
-                
+
                 Spacer()
-                
+
                 Picker("View Mode", selection: $editMode) {
                     Label("List", systemImage: "list.bullet").tag(EditMode.list)
                     Label("Text", systemImage: "doc.text").tag(EditMode.text)
@@ -36,9 +36,9 @@ struct GCodeEditorView: View {
             }
             .padding()
             .background(Color(NSColor.controlBackgroundColor))
-            
+
             Divider()
-            
+
             // Content
             if editMode == .list {
                 GCodeListView(
@@ -65,7 +65,7 @@ struct GCodeEditorView: View {
 struct GCodeListView: View {
     let commands: [GCodeCommand]
     @Binding var selectedCommandId: UUID?
-    
+
     var body: some View {
         List(commands, id: \.id, selection: $selectedCommandId) { command in
             GCodeCommandRow(command: command)
@@ -77,7 +77,7 @@ struct GCodeListView: View {
 
 struct GCodeCommandRow: View {
     let command: GCodeCommand
-    
+
     var body: some View {
         HStack(spacing: 12) {
             // Line number
@@ -87,29 +87,29 @@ struct GCodeCommandRow: View {
                     .foregroundColor(.secondary)
                     .frame(width: 50, alignment: .trailing)
             }
-            
+
             // Command icon
             Image(systemName: commandIcon)
                 .foregroundColor(commandColor)
                 .frame(width: 20)
-            
+
             // Command description
             VStack(alignment: .leading, spacing: 2) {
                 Text(command.displayDescription)
                     .font(.system(.body, design: .monospaced))
-                
+
                 if !command.parameters.isEmpty {
                     Text(command.parameters.map { $0.formatted }.joined(separator: " "))
                         .font(.system(.caption, design: .monospaced))
                         .foregroundColor(.secondary)
                 }
             }
-            
+
             Spacer()
         }
         .padding(.vertical, 2)
     }
-    
+
     private var commandIcon: String {
         switch command.command {
         case .motion(.rapid):
@@ -136,7 +136,7 @@ struct GCodeCommandRow: View {
             return "command"
         }
     }
-    
+
     private var commandColor: Color {
         switch command.command {
         case .motion:
@@ -159,7 +159,7 @@ struct GCodeTextEditor: View {
     @Binding var text: String
     let onSave: () -> Void
     @State private var isModified = false
-    
+
     var body: some View {
         VStack(spacing: 0) {
             TextEditor(text: $text)
@@ -168,15 +168,15 @@ struct GCodeTextEditor: View {
                 .onChange(of: text) { _ in
                     isModified = true
                 }
-            
+
             if isModified {
                 HStack {
                     Text("Modified")
                         .font(.caption)
                         .foregroundColor(.orange)
-                    
+
                     Spacer()
-                    
+
                     Button("Apply Changes") {
                         onSave()
                         isModified = false
@@ -199,10 +199,9 @@ struct GCodeTextEditor: View {
         GCodeCommand(rawLine: "M5", lineNumber: 3),
         GCodeCommand(rawLine: "G0 X0 Y0", lineNumber: 4),
         GCodeCommand(rawLine: "M3 S500", lineNumber: 5),
-        GCodeCommand(rawLine: "G1 X10 Y10 F1000", lineNumber: 6),
+        GCodeCommand(rawLine: "G1 X10 Y10 F1000", lineNumber: 6)
     ]
-    
+
     return GCodeEditorView(file: file, selectedCommandId: .constant(nil))
         .frame(width: 400, height: 600)
 }
-
