@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <title>Bezier Curves</title>
+  <desc>Various Bezier curves for testing curve conversion algorithms</desc>
+  
+  <!-- Quadratic Bezier curve -->
+  <path d="M 20,100 Q 100,20 180,100" fill="none" stroke="blue" stroke-width="2"/>
+  
+  <!-- Cubic Bezier curve -->
+  <path d="M 20,150 C 60,120 140,180 180,150" fill="none" stroke="red" stroke-width="2"/>
+  
+  <!-- S curve (smooth cubic) -->
+  <path d="M 50,20 S 100,50 150,20" fill="none" stroke="green" stroke-width="2"/>
+</svg>
+

@@ -13,6 +13,10 @@ struct LaserGRBLApp: App {
     @StateObject private var fileManager = GCodeFileManager()
     @StateObject private var serialManager = SerialPortManager()
     @StateObject private var grblController: GrblController
+    @StateObject private var imageImporter = ImageImporter()
+    @StateObject private var rasterConverter = RasterConverter()
+    @StateObject private var svgImporter = SVGImporter()
+    @StateObject private var pathConverter = PathToGCodeConverter()
     
     init() {
         // Initialize serial manager first
@@ -29,6 +33,10 @@ struct LaserGRBLApp: App {
                 .environmentObject(fileManager)
                 .environmentObject(serialManager)
                 .environmentObject(grblController)
+                .environmentObject(imageImporter)
+                .environmentObject(rasterConverter)
+                .environmentObject(svgImporter)
+                .environmentObject(pathConverter)
                 .frame(minWidth: 1200, minHeight: 700)
         }
         .commands {
@@ -37,6 +45,20 @@ struct LaserGRBLApp: App {
                     fileManager.openFile()
                 }
                 .keyboardShortcut("o", modifiers: .command)
+                
+                Button("Import SVG...") {
+                    Task {
+                        await svgImporter.importSVG()
+                    }
+                }
+                .keyboardShortcut("v", modifiers: .command)
+                
+                Button("Import Image...") {
+                    Task {
+                        await imageImporter.importImage()
+                    }
+                }
+                .keyboardShortcut("i", modifiers: .command)
             }
 
             CommandGroup(after: .newItem) {

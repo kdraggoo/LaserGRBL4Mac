@@ -11,6 +11,10 @@ struct ContentView: View {
     @EnvironmentObject var fileManager: GCodeFileManager
     @EnvironmentObject var serialManager: SerialPortManager
     @EnvironmentObject var grblController: GrblController
+    @EnvironmentObject var imageImporter: ImageImporter
+    @EnvironmentObject var rasterConverter: RasterConverter
+    @EnvironmentObject var svgImporter: SVGImporter
+    @EnvironmentObject var pathConverter: PathToGCodeConverter
     
     @State private var selectedCommandId: UUID?
     @State private var showFileInfo = false
@@ -18,12 +22,14 @@ struct ContentView: View {
 
     enum MainTab: String, CaseIterable {
         case gcode = "G-Code"
+        case importTab = "Import"
         case control = "Control"
         case console = "Console"
         
         var icon: String {
             switch self {
             case .gcode: return "doc.text"
+            case .importTab: return "doc.badge.plus"
             case .control: return "gamecontroller"
             case .console: return "terminal"
             }
@@ -43,7 +49,7 @@ struct ContentView: View {
                 Divider()
                 
                 // File controls
-                SidebarView(showFileInfo: $showFileInfo)
+                SidebarView(showFileInfo: $showFileInfo, selectedTab: $selectedTab)
             }
             .frame(minWidth: 300, maxWidth: 350)
         } detail: {
@@ -65,6 +71,8 @@ struct ContentView: View {
                 switch selectedTab {
                 case .gcode:
                     gcodeTabView
+                case .importTab:
+                    importTabView
                 case .control:
                     controlTabView
                 case .console:
@@ -110,9 +118,14 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 // Welcome screen
-                WelcomeView()
+                WelcomeView(selectedTab: $selectedTab)
             }
         }
+    }
+    
+    private var importTabView: some View {
+        UnifiedImportView()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     private var controlTabView: some View {
@@ -130,7 +143,10 @@ struct ContentView: View {
 
 struct SidebarView: View {
     @EnvironmentObject var fileManager: GCodeFileManager
+    @EnvironmentObject var imageImporter: ImageImporter
+    @EnvironmentObject var svgImporter: SVGImporter
     @Binding var showFileInfo: Bool
+    @Binding var selectedTab: ContentView.MainTab
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -150,6 +166,13 @@ struct SidebarView: View {
 
                 Button(action: { fileManager.newFile() }) {
                     Label("New File", systemImage: "doc")
+                }
+                .buttonStyle(.bordered)
+                
+                Button(action: { 
+                    selectedTab = .importTab
+                }) {
+                    Label("Import Files", systemImage: "doc.badge.plus")
                 }
                 .buttonStyle(.bordered)
             }
@@ -194,10 +217,10 @@ struct SidebarView: View {
             // Status
             VStack(alignment: .leading, spacing: 4) {
                 Divider()
-                Text("Phase 2: Complete")
+                Text("Phase 4: In Progress")
                     .font(.caption)
                     .foregroundColor(.secondary)
-                Text("USB Serial + GRBL Control")
+                Text("SVG Vector Import")
                     .font(.caption2)
                     .foregroundColor(.secondary)
             }
@@ -225,6 +248,9 @@ struct SidebarView: View {
 
 struct WelcomeView: View {
     @EnvironmentObject var fileManager: GCodeFileManager
+    @EnvironmentObject var svgImporter: SVGImporter
+    @EnvironmentObject var imageImporter: ImageImporter
+    @Binding var selectedTab: ContentView.MainTab
 
     var body: some View {
         VStack(spacing: 24) {
@@ -246,14 +272,23 @@ struct WelcomeView: View {
             VStack(spacing: 12) {
                 Button(action: { fileManager.openFile() }) {
                     Label("Open G-Code File", systemImage: "folder.badge.plus")
-                        .frame(width: 200)
+                        .frame(width: 220)
                 }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
 
                 Button(action: { fileManager.newFile() }) {
                     Label("Create New File", systemImage: "doc.badge.plus")
-                        .frame(width: 200)
+                        .frame(width: 220)
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
+                
+                Button(action: { 
+                    selectedTab = .importTab
+                }) {
+                    Label("Import Files", systemImage: "doc.badge.plus")
+                        .frame(width: 220)
                 }
                 .buttonStyle(.bordered)
                 .controlSize(.large)
@@ -266,13 +301,13 @@ struct WelcomeView: View {
                 Text("✅ Development Status")
                     .font(.headline)
 
-                ProgressView(value: 0.40) {
-                    Text("Phase 2: USB Serial + GRBL Control")
+                ProgressView(value: 0.85) {
+                    Text("Phase 4: Unified Import Complete")
                         .font(.caption)
                 }
-                .frame(width: 300)
+                .frame(width: 350)
                 
-                Text("Connect to your machine using the sidebar")
+                Text("Import SVG files and images with unified workflow")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
