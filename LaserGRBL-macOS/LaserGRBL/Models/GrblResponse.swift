@@ -102,6 +102,9 @@ struct GrblStatus {
     let workPosition: Position?
     let feedRate: Double?
     let spindleSpeed: Double?
+    let feedOverride: Int?
+    let spindleOverride: Int?
+    let rapidOverride: Int?
     let rawMessage: String
     let timestamp: Date
     
@@ -136,6 +139,9 @@ struct GrblStatus {
         var wPos: Position?
         var feed: Double?
         var spindle: Double?
+        var feedOv: Int?
+        var spindleOv: Int?
+        var rapidOv: Int?
         
         // Parse remaining parts
         for part in parts.dropFirst() {
@@ -158,6 +164,18 @@ struct GrblStatus {
                 if fsValues.count >= 2 {
                     spindle = Double(fsValues[1])
                 }
+            case "Ov":
+                // Override values: Ov:100,100,100 (feed, spindle, rapid)
+                let ovValues = value.split(separator: ",")
+                if ovValues.count >= 1 {
+                    feedOv = Int(ovValues[0])
+                }
+                if ovValues.count >= 2 {
+                    spindleOv = Int(ovValues[1])
+                }
+                if ovValues.count >= 3 {
+                    rapidOv = Int(ovValues[2])
+                }
             default:
                 break
             }
@@ -167,6 +185,9 @@ struct GrblStatus {
         self.workPosition = wPos
         self.feedRate = feed
         self.spindleSpeed = spindle
+        self.feedOverride = feedOv
+        self.spindleOverride = spindleOv
+        self.rapidOverride = rapidOv
     }
     
     private static func parsePosition(_ value: String) -> Position? {

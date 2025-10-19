@@ -42,6 +42,19 @@
 		0A80BD382EA5432000776C23 /* VectorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD362EA5432000776C23 /* VectorSettingsView.swift */; };
 		0A80BD392EA5432000776C23 /* VectorPreviewCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD352EA5432000776C23 /* VectorPreviewCanvas.swift */; };
 		0A80BD3B2EA55F6200776C23 /* UnifiedImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD3A2EA55F6200776C23 /* UnifiedImportView.swift */; };
+		0A80BD4E2EA56B7200776C23 /* HelpSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD4C2EA56B7200776C23 /* HelpSystem.swift */; };
+		0A80BD4F2EA56B7200776C23 /* NetworkConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD4D2EA56B7200776C23 /* NetworkConnectionManager.swift */; };
+		0A80BD552EA56B8F00776C23 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD502EA56B8F00776C23 /* CustomButton.swift */; };
+		0A80BD562EA56B8F00776C23 /* GrblSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD512EA56B8F00776C23 /* GrblSettings.swift */; };
+		0A80BD572EA56B8F00776C23 /* MaterialDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD542EA56B8F00776C23 /* MaterialDatabase.swift */; };
+		0A80BD582EA56B8F00776C23 /* HelpResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD522EA56B8F00776C23 /* HelpResources.swift */; };
+		0A80BD592EA56B8F00776C23 /* LaserLifeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD532EA56B8F00776C23 /* LaserLifeTracker.swift */; };
+		0A80BD602EA56BBC00776C23 /* MaterialDatabaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD5E2EA56BBC00776C23 /* MaterialDatabaseView.swift */; };
+		0A80BD612EA56BBC00776C23 /* LaserLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD5D2EA56BBC00776C23 /* LaserLifeView.swift */; };
+		0A80BD622EA56BBC00776C23 /* NetworkConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD5F2EA56BBC00776C23 /* NetworkConnectionView.swift */; };
+		0A80BD632EA56BBC00776C23 /* GrblSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD5B2EA56BBC00776C23 /* GrblSettingsView.swift */; };
+		0A80BD642EA56BBC00776C23 /* HelpMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD5C2EA56BBC00776C23 /* HelpMenuView.swift */; };
+		0A80BD652EA56BBC00776C23 /* CustomButtonEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD5A2EA56BBC00776C23 /* CustomButtonEditorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +112,19 @@
 		0A80BD352EA5432000776C23 /* VectorPreviewCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorPreviewCanvas.swift; sourceTree = "<group>"; };
 		0A80BD362EA5432000776C23 /* VectorSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorSettingsView.swift; sourceTree = "<group>"; };
 		0A80BD3A2EA55F6200776C23 /* UnifiedImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedImportView.swift; sourceTree = "<group>"; };
+		0A80BD4C2EA56B7200776C23 /* HelpSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSystem.swift; sourceTree = "<group>"; };
+		0A80BD4D2EA56B7200776C23 /* NetworkConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnectionManager.swift; sourceTree = "<group>"; };
+		0A80BD502EA56B8F00776C23 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		0A80BD512EA56B8F00776C23 /* GrblSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrblSettings.swift; sourceTree = "<group>"; };
+		0A80BD522EA56B8F00776C23 /* HelpResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpResources.swift; sourceTree = "<group>"; };
+		0A80BD532EA56B8F00776C23 /* LaserLifeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserLifeTracker.swift; sourceTree = "<group>"; };
+		0A80BD542EA56B8F00776C23 /* MaterialDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialDatabase.swift; sourceTree = "<group>"; };
+		0A80BD5A2EA56BBC00776C23 /* CustomButtonEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonEditorView.swift; sourceTree = "<group>"; };
+		0A80BD5B2EA56BBC00776C23 /* GrblSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrblSettingsView.swift; sourceTree = "<group>"; };
+		0A80BD5C2EA56BBC00776C23 /* HelpMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpMenuView.swift; sourceTree = "<group>"; };
+		0A80BD5D2EA56BBC00776C23 /* LaserLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserLifeView.swift; sourceTree = "<group>"; };
+		0A80BD5E2EA56BBC00776C23 /* MaterialDatabaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialDatabaseView.swift; sourceTree = "<group>"; };
+		0A80BD5F2EA56BBC00776C23 /* NetworkConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -175,6 +201,8 @@
 		0A80BCCC2E99652C00776C23 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				0A80BD4C2EA56B7200776C23 /* HelpSystem.swift */,
+				0A80BD4D2EA56B7200776C23 /* NetworkConnectionManager.swift */,
 				0A80BD302EA53FA400776C23 /* BezierTools.swift */,
 				0A80BD312EA53FA400776C23 /* PathToGCodeConverter.swift */,
 				0A80BD2B2EA53DE300776C23 /* SVGImporter.swift */,
@@ -190,6 +218,11 @@
 		0A80BCCF2E99652C00776C23 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0A80BD502EA56B8F00776C23 /* CustomButton.swift */,
+				0A80BD512EA56B8F00776C23 /* GrblSettings.swift */,
+				0A80BD522EA56B8F00776C23 /* HelpResources.swift */,
+				0A80BD532EA56B8F00776C23 /* LaserLifeTracker.swift */,
+				0A80BD542EA56B8F00776C23 /* MaterialDatabase.swift */,
 				0A80BD232EA53DD000776C23 /* SVGDocument.swift */,
 				0A80BD242EA53DD000776C23 /* SVGLayer.swift */,
 				0A80BD252EA53DD000776C23 /* SVGPath.swift */,
@@ -207,6 +240,12 @@
 		0A80BCD42E99652C00776C23 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0A80BD5A2EA56BBC00776C23 /* CustomButtonEditorView.swift */,
+				0A80BD5B2EA56BBC00776C23 /* GrblSettingsView.swift */,
+				0A80BD5C2EA56BBC00776C23 /* HelpMenuView.swift */,
+				0A80BD5D2EA56BBC00776C23 /* LaserLifeView.swift */,
+				0A80BD5E2EA56BBC00776C23 /* MaterialDatabaseView.swift */,
+				0A80BD5F2EA56BBC00776C23 /* NetworkConnectionView.swift */,
 				0A80BD3A2EA55F6200776C23 /* UnifiedImportView.swift */,
 				0A80BD342EA5432000776C23 /* SVGImportView.swift */,
 				0A80BD352EA5432000776C23 /* VectorPreviewCanvas.swift */,
@@ -378,9 +417,22 @@
 				0A80BD372EA5432000776C23 /* SVGImportView.swift in Sources */,
 				0A80BD382EA5432000776C23 /* VectorSettingsView.swift in Sources */,
 				0A80BD392EA5432000776C23 /* VectorPreviewCanvas.swift in Sources */,
+				0A80BD552EA56B8F00776C23 /* CustomButton.swift in Sources */,
+				0A80BD562EA56B8F00776C23 /* GrblSettings.swift in Sources */,
+				0A80BD572EA56B8F00776C23 /* MaterialDatabase.swift in Sources */,
+				0A80BD582EA56B8F00776C23 /* HelpResources.swift in Sources */,
+				0A80BD592EA56B8F00776C23 /* LaserLifeTracker.swift in Sources */,
 				0A80BD322EA53FA400776C23 /* PathToGCodeConverter.swift in Sources */,
+				0A80BD602EA56BBC00776C23 /* MaterialDatabaseView.swift in Sources */,
+				0A80BD612EA56BBC00776C23 /* LaserLifeView.swift in Sources */,
+				0A80BD622EA56BBC00776C23 /* NetworkConnectionView.swift in Sources */,
+				0A80BD632EA56BBC00776C23 /* GrblSettingsView.swift in Sources */,
+				0A80BD642EA56BBC00776C23 /* HelpMenuView.swift in Sources */,
+				0A80BD652EA56BBC00776C23 /* CustomButtonEditorView.swift in Sources */,
 				0A80BD332EA53FA400776C23 /* BezierTools.swift in Sources */,
 				0A80BCD52E99652C00776C23 /* GCodeCommand.swift in Sources */,
+				0A80BD4E2EA56B7200776C23 /* HelpSystem.swift in Sources */,
+				0A80BD4F2EA56B7200776C23 /* NetworkConnectionManager.swift in Sources */,
 				0A80BD192E99F2B800776C23 /* RasterImage.swift in Sources */,
 				0A80BD1A2E99F2B800776C23 /* RasterSettings.swift in Sources */,
 				0A80BD032E99EBB200776C23 /* GrblController.swift in Sources */,

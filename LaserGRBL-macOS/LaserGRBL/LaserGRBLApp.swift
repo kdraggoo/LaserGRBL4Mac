@@ -10,6 +10,8 @@ import SwiftUI
 
 @main
 struct LaserGRBLApp: App {
+    @State private var showingHelp = false
+    @State private var showingMaterialDatabase = false
     @StateObject private var fileManager = GCodeFileManager()
     @StateObject private var serialManager = SerialPortManager()
     @StateObject private var grblController: GrblController
@@ -17,14 +19,23 @@ struct LaserGRBLApp: App {
     @StateObject private var rasterConverter = RasterConverter()
     @StateObject private var svgImporter = SVGImporter()
     @StateObject private var pathConverter = PathToGCodeConverter()
+    @StateObject private var settingsManager = GrblSettingsManager()
+    @StateObject private var materialDatabase = MaterialDatabase()
+    @StateObject private var customButtonManager = CustomButtonManager()
     
     init() {
         // Initialize serial manager first
         let serial = SerialPortManager()
         _serialManager = StateObject(wrappedValue: serial)
         
-        // Initialize GRBL controller with serial manager
-        _grblController = StateObject(wrappedValue: GrblController(serialManager: serial))
+        // Initialize settings manager
+        let settings = GrblSettingsManager()
+        _settingsManager = StateObject(wrappedValue: settings)
+        
+        // Initialize GRBL controller with serial manager and settings
+        let controller = GrblController(serialManager: serial)
+        controller.settingsManager = settings
+        _grblController = StateObject(wrappedValue: controller)
     }
 
     var body: some Scene {
@@ -37,9 +48,48 @@ struct LaserGRBLApp: App {
                 .environmentObject(rasterConverter)
                 .environmentObject(svgImporter)
                 .environmentObject(pathConverter)
+                .environmentObject(settingsManager)
+                .environmentObject(customButtonManager)
                 .frame(minWidth: 1200, minHeight: 700)
+                .sheet(isPresented: $showingHelp) {
+                    HelpMenuView()
+                }
+                .sheet(isPresented: $showingMaterialDatabase) {
+                    MaterialDatabaseView(database: materialDatabase)
+                }
         }
         .commands {
+            // Tools menu
+            CommandMenu("Tools") {
+                Button("Material Database...") {
+                    showingMaterialDatabase = true
+                }
+                .keyboardShortcut("m", modifiers: .command)
+            }
+            
+            // Help menu
+            CommandGroup(replacing: .help) {
+                Button("LaserGRBL Help") {
+                    showingHelp = true
+                }
+                .keyboardShortcut("?", modifiers: .command)
+                
+                Divider()
+                
+                Button("Material Guide") {
+                    showingHelp = true
+                }
+                
+                Button("Error & Alarm Codes") {
+                    showingHelp = true
+                }
+                
+                Button("Keyboard Shortcuts") {
+                    showingHelp = true
+                }
+            }
+            
+            // File menu
             CommandGroup(replacing: .newItem) {
                 Button("Open G-Code...") {
                     fileManager.openFile()
