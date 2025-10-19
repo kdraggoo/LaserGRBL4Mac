@@ -85,6 +85,34 @@ class GCodeFile: ObservableObject, Identifiable {
         print("Loaded \(parsedCommands.count) commands in \(String(format: "%.2f", elapsed))s")
     }
 
+    /// Load G-code from text string
+    func loadFromText(_ text: String) async throws {
+        let startTime = Date()
+
+        // Parse into commands
+        let lines = text.components(separatedBy: .newlines)
+        var parsedCommands: [GCodeCommand] = []
+
+        for (index, line) in lines.enumerated() {
+            let command = GCodeCommand(rawLine: line, lineNumber: index + 1)
+            if !command.isEmpty {
+                parsedCommands.append(command)
+            }
+        }
+
+        // Update on main thread
+        await MainActor.run {
+            self.commands = parsedCommands
+            self.isModified = true
+
+            // Analyze the file
+            self.analyze()
+        }
+
+        let elapsed = Date().timeIntervalSince(startTime)
+        print("Loaded \(parsedCommands.count) commands from text in \(String(format: "%.2f", elapsed))s")
+    }
+
     // MARK: - File Saving
 
     /// Save G-code to a file

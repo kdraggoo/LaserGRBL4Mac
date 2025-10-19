@@ -24,6 +24,24 @@
 		0A80BD0C2E99EBD200776C23 /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD0A2E99EBD200776C23 /* ConsoleView.swift */; };
 		0A80BD0D2E99EBD200776C23 /* ConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD092E99EBD200776C23 /* ConnectionView.swift */; };
 		0A80BD0E2E99EBD200776C23 /* ControlPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD0B2E99EBD200776C23 /* ControlPanelView.swift */; };
+		0A80BD192E99F2B800776C23 /* RasterImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD172E99F2B800776C23 /* RasterImage.swift */; };
+		0A80BD1A2E99F2B800776C23 /* RasterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD182E99F2B800776C23 /* RasterSettings.swift */; };
+		0A80BD1D2E99F2C700776C23 /* ImageImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD1B2E99F2C700776C23 /* ImageImporter.swift */; };
+		0A80BD1E2E99F2C700776C23 /* RasterConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD1C2E99F2C700776C23 /* RasterConverter.swift */; };
+		0A80BD212E99F2EF00776C23 /* ImageImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD1F2E99F2EF00776C23 /* ImageImportView.swift */; };
+		0A80BD222E99F2EF00776C23 /* RasterSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD202E99F2EF00776C23 /* RasterSettingsView.swift */; };
+		0A80BD272EA53DD000776C23 /* SVGDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD232EA53DD000776C23 /* SVGDocument.swift */; };
+		0A80BD282EA53DD000776C23 /* VectorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD262EA53DD000776C23 /* VectorSettings.swift */; };
+		0A80BD292EA53DD000776C23 /* SVGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD252EA53DD000776C23 /* SVGPath.swift */; };
+		0A80BD2A2EA53DD000776C23 /* SVGLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD242EA53DD000776C23 /* SVGLayer.swift */; };
+		0A80BD2C2EA53DE300776C23 /* SVGImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD2B2EA53DE300776C23 /* SVGImporter.swift */; };
+		0A80BD2F2EA53E4600776C23 /* SwiftDraw in Frameworks */ = {isa = PBXBuildFile; productRef = 0A80BD2E2EA53E4600776C23 /* SwiftDraw */; };
+		0A80BD322EA53FA400776C23 /* PathToGCodeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD312EA53FA400776C23 /* PathToGCodeConverter.swift */; };
+		0A80BD332EA53FA400776C23 /* BezierTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD302EA53FA400776C23 /* BezierTools.swift */; };
+		0A80BD372EA5432000776C23 /* SVGImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD342EA5432000776C23 /* SVGImportView.swift */; };
+		0A80BD382EA5432000776C23 /* VectorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD362EA5432000776C23 /* VectorSettingsView.swift */; };
+		0A80BD392EA5432000776C23 /* VectorPreviewCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD352EA5432000776C23 /* VectorPreviewCanvas.swift */; };
+		0A80BD3B2EA55F6200776C23 /* UnifiedImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80BD3A2EA55F6200776C23 /* UnifiedImportView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +82,23 @@
 		0A80BD092E99EBD200776C23 /* ConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionView.swift; sourceTree = "<group>"; };
 		0A80BD0A2E99EBD200776C23 /* ConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleView.swift; sourceTree = "<group>"; };
 		0A80BD0B2E99EBD200776C23 /* ControlPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanelView.swift; sourceTree = "<group>"; };
+		0A80BD172E99F2B800776C23 /* RasterImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterImage.swift; sourceTree = "<group>"; };
+		0A80BD182E99F2B800776C23 /* RasterSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterSettings.swift; sourceTree = "<group>"; };
+		0A80BD1B2E99F2C700776C23 /* ImageImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageImporter.swift; sourceTree = "<group>"; };
+		0A80BD1C2E99F2C700776C23 /* RasterConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterConverter.swift; sourceTree = "<group>"; };
+		0A80BD1F2E99F2EF00776C23 /* ImageImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageImportView.swift; sourceTree = "<group>"; };
+		0A80BD202E99F2EF00776C23 /* RasterSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterSettingsView.swift; sourceTree = "<group>"; };
+		0A80BD232EA53DD000776C23 /* SVGDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGDocument.swift; sourceTree = "<group>"; };
+		0A80BD242EA53DD000776C23 /* SVGLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGLayer.swift; sourceTree = "<group>"; };
+		0A80BD252EA53DD000776C23 /* SVGPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGPath.swift; sourceTree = "<group>"; };
+		0A80BD262EA53DD000776C23 /* VectorSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorSettings.swift; sourceTree = "<group>"; };
+		0A80BD2B2EA53DE300776C23 /* SVGImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGImporter.swift; sourceTree = "<group>"; };
+		0A80BD302EA53FA400776C23 /* BezierTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierTools.swift; sourceTree = "<group>"; };
+		0A80BD312EA53FA400776C23 /* PathToGCodeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathToGCodeConverter.swift; sourceTree = "<group>"; };
+		0A80BD342EA5432000776C23 /* SVGImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGImportView.swift; sourceTree = "<group>"; };
+		0A80BD352EA5432000776C23 /* VectorPreviewCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorPreviewCanvas.swift; sourceTree = "<group>"; };
+		0A80BD362EA5432000776C23 /* VectorSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorSettingsView.swift; sourceTree = "<group>"; };
+		0A80BD3A2EA55F6200776C23 /* UnifiedImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedImportView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -89,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A80BD2F2EA53E4600776C23 /* SwiftDraw in Frameworks */,
 				0A80BD002E99E61200776C23 /* ORSSerial in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +175,11 @@
 		0A80BCCC2E99652C00776C23 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				0A80BD302EA53FA400776C23 /* BezierTools.swift */,
+				0A80BD312EA53FA400776C23 /* PathToGCodeConverter.swift */,
+				0A80BD2B2EA53DE300776C23 /* SVGImporter.swift */,
+				0A80BD1B2E99F2C700776C23 /* ImageImporter.swift */,
+				0A80BD1C2E99F2C700776C23 /* RasterConverter.swift */,
 				0A80BD012E99EBB200776C23 /* GrblController.swift */,
 				0A80BD022E99EBB200776C23 /* SerialPortManager.swift */,
 				0A80BCCB2E99652C00776C23 /* GCodeFileManager.swift */,
@@ -149,6 +190,12 @@
 		0A80BCCF2E99652C00776C23 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0A80BD232EA53DD000776C23 /* SVGDocument.swift */,
+				0A80BD242EA53DD000776C23 /* SVGLayer.swift */,
+				0A80BD252EA53DD000776C23 /* SVGPath.swift */,
+				0A80BD262EA53DD000776C23 /* VectorSettings.swift */,
+				0A80BD172E99F2B800776C23 /* RasterImage.swift */,
+				0A80BD182E99F2B800776C23 /* RasterSettings.swift */,
 				0A80BD052E99EBC000776C23 /* GrblCommand.swift */,
 				0A80BD062E99EBC000776C23 /* GrblResponse.swift */,
 				0A80BCCD2E99652C00776C23 /* GCodeCommand.swift */,
@@ -160,6 +207,12 @@
 		0A80BCD42E99652C00776C23 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0A80BD3A2EA55F6200776C23 /* UnifiedImportView.swift */,
+				0A80BD342EA5432000776C23 /* SVGImportView.swift */,
+				0A80BD352EA5432000776C23 /* VectorPreviewCanvas.swift */,
+				0A80BD362EA5432000776C23 /* VectorSettingsView.swift */,
+				0A80BD1F2E99F2EF00776C23 /* ImageImportView.swift */,
+				0A80BD202E99F2EF00776C23 /* RasterSettingsView.swift */,
 				0A80BD092E99EBD200776C23 /* ConnectionView.swift */,
 				0A80BD0A2E99EBD200776C23 /* ConsoleView.swift */,
 				0A80BD0B2E99EBD200776C23 /* ControlPanelView.swift */,
@@ -192,6 +245,7 @@
 			name = LaserGRBL;
 			packageProductDependencies = (
 				0A80BCFF2E99E61200776C23 /* ORSSerial */,
+				0A80BD2E2EA53E4600776C23 /* SwiftDraw */,
 			);
 			productName = LaserGRBL;
 			productReference = 0A80BC9E2E9964E300776C23 /* LaserGRBL.app */;
@@ -277,6 +331,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				0A80BCFE2E99E61200776C23 /* XCRemoteSwiftPackageReference "ORSSerialPort" */,
+				0A80BD2D2EA53E4600776C23 /* XCRemoteSwiftPackageReference "SwiftDraw" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0A80BC9F2E9964E300776C23 /* Products */;
@@ -320,18 +375,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A80BD372EA5432000776C23 /* SVGImportView.swift in Sources */,
+				0A80BD382EA5432000776C23 /* VectorSettingsView.swift in Sources */,
+				0A80BD392EA5432000776C23 /* VectorPreviewCanvas.swift in Sources */,
+				0A80BD322EA53FA400776C23 /* PathToGCodeConverter.swift in Sources */,
+				0A80BD332EA53FA400776C23 /* BezierTools.swift in Sources */,
 				0A80BCD52E99652C00776C23 /* GCodeCommand.swift in Sources */,
+				0A80BD192E99F2B800776C23 /* RasterImage.swift in Sources */,
+				0A80BD1A2E99F2B800776C23 /* RasterSettings.swift in Sources */,
 				0A80BD032E99EBB200776C23 /* GrblController.swift in Sources */,
 				0A80BD042E99EBB200776C23 /* SerialPortManager.swift in Sources */,
+				0A80BD212E99F2EF00776C23 /* ImageImportView.swift in Sources */,
+				0A80BD222E99F2EF00776C23 /* RasterSettingsView.swift in Sources */,
+				0A80BD3B2EA55F6200776C23 /* UnifiedImportView.swift in Sources */,
+				0A80BD272EA53DD000776C23 /* SVGDocument.swift in Sources */,
+				0A80BD282EA53DD000776C23 /* VectorSettings.swift in Sources */,
+				0A80BD292EA53DD000776C23 /* SVGPath.swift in Sources */,
+				0A80BD2A2EA53DD000776C23 /* SVGLayer.swift in Sources */,
 				0A80BCD62E99652C00776C23 /* GCodeFileManager.swift in Sources */,
 				0A80BCD72E99652C00776C23 /* LaserGRBLApp.swift in Sources */,
 				0A80BD072E99EBC000776C23 /* GrblResponse.swift in Sources */,
 				0A80BD082E99EBC000776C23 /* GrblCommand.swift in Sources */,
 				0A80BCD82E99652C00776C23 /* GCodeFile.swift in Sources */,
+				0A80BD2C2EA53DE300776C23 /* SVGImporter.swift in Sources */,
 				0A80BCD92E99652C00776C23 /* GCodeEditorView.swift in Sources */,
 				0A80BCDA2E99652C00776C23 /* GCodePreviewView.swift in Sources */,
 				0A80BCDB2E99652C00776C23 /* ContentView.swift in Sources */,
 				0A80BD0C2E99EBD200776C23 /* ConsoleView.swift in Sources */,
+				0A80BD1D2E99F2C700776C23 /* ImageImporter.swift in Sources */,
+				0A80BD1E2E99F2C700776C23 /* RasterConverter.swift in Sources */,
 				0A80BD0D2E99EBD200776C23 /* ConnectionView.swift in Sources */,
 				0A80BD0E2E99EBD200776C23 /* ControlPanelView.swift in Sources */,
 				0A80BCDC2E99652C00776C23 /* FileInfoView.swift in Sources */,
@@ -684,6 +756,14 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		0A80BD2D2EA53E4600776C23 /* XCRemoteSwiftPackageReference "SwiftDraw" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swhitty/SwiftDraw";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.25.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -691,6 +771,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A80BCFE2E99E61200776C23 /* XCRemoteSwiftPackageReference "ORSSerialPort" */;
 			productName = ORSSerial;
+		};
+		0A80BD2E2EA53E4600776C23 /* SwiftDraw */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A80BD2D2EA53E4600776C23 /* XCRemoteSwiftPackageReference "SwiftDraw" */;
+			productName = SwiftDraw;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
