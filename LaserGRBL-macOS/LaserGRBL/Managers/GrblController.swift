@@ -24,6 +24,16 @@ class GrblController: ObservableObject {
     @Published var pendingCommands: [GrblCommand] = []
     @Published var consoleLog: [ConsoleEntry] = []
     
+    // Override controls (GRBL v1.1)
+    @Published var feedOverride: Int = 100
+    @Published var spindleOverride: Int = 100
+    @Published var rapidOverride: Int = 100
+    
+    // Settings management
+    var settingsManager: GrblSettingsManager?
+    private var settingsResponseBuffer: [String] = []
+    private var isReadingSettings = false
+    
     // MARK: - Private Properties
     
     private let serialManager: SerialPortManager
@@ -231,6 +241,9 @@ class GrblController: ObservableObject {
             case .feedback:
                 self.handleFeedback(line)
                 
+            case .config:
+                self.handleSettingResponse(line)
+                
             default:
                 self.log("Unknown response: \(line)", type: .info)
             }
@@ -239,13 +252,23 @@ class GrblController: ObservableObject {
     
     private func handleCommandResponse(_ response: GrblResponse) {
         guard !pendingCommands.isEmpty else {
-            log("Received response with no pending commands", type: .error)
+            // If reading settings and get OK, finalize
+            if isReadingSettings && response.isSuccess {
+                finalizeSettingsRead()
+            } else {
+                log("Received response with no pending commands", type: .error)
+            }
             return
         }
         
         // Match response to oldest pending command
         let command = pendingCommands.removeFirst()
         command.setResponse(response)
+        
+        // If reading settings and got OK for $$ command, finalize
+        if isReadingSettings && response.isSuccess && command.command.contains("$$") {
+            finalizeSettingsRead()
+        }
         
         if response.isError {
             log("Command error: \(response.rawMessage)", type: .error)
@@ -266,6 +289,17 @@ class GrblController: ObservableObject {
         
         machineStatus = status
         machineState = status.state
+        
+        // Update override values from status
+        if let feedOv = status.feedOverride {
+            feedOverride = feedOv
+        }
+        if let spindleOv = status.spindleOverride {
+            spindleOverride = spindleOv
+        }
+        if let rapidOv = status.rapidOverride {
+            rapidOverride = rapidOv
+        }
     }
     
     private func handleAlarm(_ line: String) {
@@ -280,6 +314,32 @@ class GrblController: ObservableObject {
     
     private func handleFeedback(_ line: String) {
         log("Feedback: \(line)", type: .info)
+    }
+    
+    private func handleSettingResponse(_ line: String) {
+        // Setting format: $0=10
+        guard isReadingSettings else { return }
+        
+        settingsResponseBuffer.append(line)
+        
+        // Check if we received "ok" which signals end of settings dump
+        // Note: The "ok" comes as a separate response, so we check pending commands
+    }
+    
+    private func finalizeSettingsRead() {
+        guard isReadingSettings, let settingsManager = settingsManager else { return }
+        
+        // Parse all buffered settings
+        settingsManager.parseSettings(from: settingsResponseBuffer)
+        
+        settingsResponseBuffer.removeAll()
+        isReadingSettings = false
+        
+        DispatchQueue.main.async {
+            settingsManager.isLoading = false
+        }
+        
+        log("Settings read complete: \(settingsManager.settings.count) settings loaded", type: .info)
     }
     
     // MARK: - Control Commands
@@ -337,6 +397,225 @@ class GrblController: ObservableObject {
         guard isConnected else { return }
         let jogCommand = GrblCommand.jog(x: x, y: y, z: z, feedRate: feedRate)
         sendSystemCommand(jogCommand)
+    }
+    
+    // MARK: - Override Commands
+    
+    /// GRBL v1.1 realtime override command bytes
+    enum OverrideCommand: UInt8 {
+        // Feed rate overrides
+        case feedReset = 0x90       // 144 - Reset to 100%
+        case feedPlus10 = 0x91      // 145 - Increase 10%
+        case feedMinus10 = 0x92     // 146 - Decrease 10%
+        case feedPlus1 = 0x93       // 147 - Increase 1%
+        case feedMinus1 = 0x94      // 148 - Decrease 1%
+        
+        // Rapid rate overrides
+        case rapidReset = 0x95      // 149 - Reset to 100%
+        case rapid50 = 0x96         // 150 - Set to 50%
+        case rapid25 = 0x97         // 151 - Set to 25%
+        
+        // Spindle/laser overrides
+        case spindleReset = 0x99    // 153 - Reset to 100%
+        case spindlePlus10 = 0x9A   // 154 - Increase 10%
+        case spindleMinus10 = 0x9B  // 155 - Decrease 10%
+        case spindlePlus1 = 0x9C    // 156 - Increase 1%
+        case spindleMinus1 = 0x9D   // 157 - Decrease 1%
+    }
+    
+    /// Set feed rate override (10-200%)
+    func setFeedOverride(_ percent: Int) {
+        guard isConnected else { return }
+        let clamped = min(max(percent, 10), 200)
+        
+        // Send appropriate override commands to reach target
+        sendOverrideCommands(current: feedOverride, target: clamped, type: .feed)
+    }
+    
+    /// Set spindle/laser power override (10-200%)
+    func setSpindleOverride(_ percent: Int) {
+        guard isConnected else { return }
+        let clamped = min(max(percent, 10), 200)
+        
+        sendOverrideCommands(current: spindleOverride, target: clamped, type: .spindle)
+    }
+    
+    /// Set rapid rate override (25%, 50%, or 100%)
+    func setRapidOverride(_ percent: Int) {
+        guard isConnected else { return }
+        
+        let command: OverrideCommand
+        if percent <= 25 {
+            command = .rapid25
+        } else if percent <= 50 {
+            command = .rapid50
+        } else {
+            command = .rapidReset
+        }
+        
+        sendOverrideByte(command)
+        log("Rapid override: \(percent)%", type: .info)
+    }
+    
+    /// Send override commands to reach target percentage
+    private func sendOverrideCommands(current: Int, target: Int, type: OverrideType) {
+        var currentValue = current
+        
+        // Reset to 100% first if it's more efficient
+        let diff = target - currentValue
+        if abs(diff) > 20 {
+            let resetCommand: OverrideCommand = type == .feed ? .feedReset : .spindleReset
+            sendOverrideByte(resetCommand)
+            currentValue = 100
+        }
+        
+        // Apply coarse adjustments (±10%)
+        let (plus10, minus10) = type == .feed ? 
+            (OverrideCommand.feedPlus10, OverrideCommand.feedMinus10) :
+            (OverrideCommand.spindlePlus10, OverrideCommand.spindleMinus10)
+        
+        while currentValue + 10 <= target {
+            sendOverrideByte(plus10)
+            currentValue += 10
+        }
+        
+        while currentValue - 10 >= target {
+            sendOverrideByte(minus10)
+            currentValue -= 10
+        }
+        
+        // Apply fine adjustments (±1%)
+        let (plus1, minus1) = type == .feed ?
+            (OverrideCommand.feedPlus1, OverrideCommand.feedMinus1) :
+            (OverrideCommand.spindlePlus1, OverrideCommand.spindleMinus1)
+        
+        while currentValue < target {
+            sendOverrideByte(plus1)
+            currentValue += 1
+        }
+        
+        while currentValue > target {
+            sendOverrideByte(minus1)
+            currentValue -= 1
+        }
+        
+        let typeName = type == .feed ? "Feed" : "Spindle"
+        log("\(typeName) override: \(target)%", type: .info)
+    }
+    
+    /// Send a single override command byte
+    private func sendOverrideByte(_ command: OverrideCommand) {
+        serialManager.send([command.rawValue])
+    }
+    
+    private enum OverrideType {
+        case feed, spindle
+    }
+    
+    // MARK: - Resume & Run from Position
+    
+    /// Resume job from a specific line number
+    func resumeFromLine(_ lineNumber: Int) {
+        guard isConnected else {
+            log("Cannot resume: not connected", type: .error)
+            return
+        }
+        
+        guard lineNumber >= 0 && lineNumber < queuedCommands.count else {
+            log("Invalid line number for resume", type: .error)
+            return
+        }
+        
+        // Remove commands before the resume point
+        let commandsToRemove = lineNumber
+        if commandsToRemove > 0 {
+            queuedCommands.removeFirst(commandsToRemove)
+        }
+        
+        log("Resuming from line \(lineNumber)", type: .info)
+        
+        // Resume if paused
+        if isPaused {
+            resume()
+        }
+    }
+    
+    /// Run from a specific position in the G-code
+    func runFromPosition(_ lineNumber: Int, syncPosition: Bool = false) {
+        guard isConnected else {
+            log("Cannot run from position: not connected", type: .error)
+            return
+        }
+        
+        // If sync position requested, send current position as work zero
+        if syncPosition {
+            sendSystemCommand(.zeroWorkPosition)
+            log("Synced position before resume", type: .info)
+        }
+        
+        // Resume from the specified line
+        resumeFromLine(lineNumber)
+    }
+    
+    /// Verify machine position matches expected
+    func verifyPosition() -> Bool {
+        guard let status = machineStatus else { return false }
+        
+        // In a full implementation, this would compare current position
+        // with the expected position for the resume point
+        // For now, just check that we have valid position data
+        return status.workPosition != nil || status.machinePosition != nil
+    }
+    
+    // MARK: - Settings Management
+    
+    /// Read all settings from GRBL controller
+    func readSettings() {
+        guard isConnected, let settingsManager = settingsManager else {
+            log("Cannot read settings: not connected or no settings manager", type: .error)
+            return
+        }
+        
+        settingsResponseBuffer.removeAll()
+        isReadingSettings = true
+        
+        DispatchQueue.main.async {
+            settingsManager.isLoading = true
+        }
+        
+        // Send $$ command to request all settings
+        sendSystemCommand(.viewSettings)
+        log("Reading settings from controller...", type: .info)
+    }
+    
+    /// Write a single setting to GRBL controller
+    func writeSetting(id: Int, value: Double) {
+        guard isConnected else {
+            log("Cannot write setting: not connected", type: .error)
+            return
+        }
+        
+        let command = GrblCommand(command: "$\(id)=\(value)", priority: .system)
+        sendSystemCommand(command)
+        log("Writing setting $\(id)=\(value)", type: .info)
+    }
+    
+    /// Write all settings to GRBL controller
+    func writeAllSettings(_ settings: [GrblSetting]) {
+        guard isConnected else {
+            log("Cannot write settings: not connected", type: .error)
+            return
+        }
+        
+        log("Writing \(settings.count) settings to controller...", type: .info)
+        
+        for setting in settings {
+            writeSetting(id: setting.id, value: setting.value)
+            // Small delay between commands to prevent buffer overflow
+            Thread.sleep(forTimeInterval: 0.05)
+        }
+        
+        log("All settings written", type: .info)
     }
     
     // MARK: - Queue Management

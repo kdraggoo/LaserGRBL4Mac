@@ -15,6 +15,8 @@ struct ContentView: View {
     @EnvironmentObject var rasterConverter: RasterConverter
     @EnvironmentObject var svgImporter: SVGImporter
     @EnvironmentObject var pathConverter: PathToGCodeConverter
+    @EnvironmentObject var settingsManager: GrblSettingsManager
+    @EnvironmentObject var customButtonManager: CustomButtonManager
     
     @State private var selectedCommandId: UUID?
     @State private var showFileInfo = false
@@ -22,15 +24,17 @@ struct ContentView: View {
 
     enum MainTab: String, CaseIterable {
         case gcode = "G-Code"
-        case importTab = "Import"
+        case importTab = "Image"
         case control = "Control"
+        case settings = "Settings"
         case console = "Console"
         
         var icon: String {
             switch self {
             case .gcode: return "doc.text"
-            case .importTab: return "doc.badge.plus"
+            case .importTab: return "photo"
             case .control: return "gamecontroller"
+            case .settings: return "gearshape"
             case .console: return "terminal"
             }
         }
@@ -75,6 +79,8 @@ struct ContentView: View {
                     importTabView
                 case .control:
                     controlTabView
+                case .settings:
+                    settingsTabView
                 case .console:
                     consoleTabView
                 }
@@ -129,7 +135,12 @@ struct ContentView: View {
     }
     
     private var controlTabView: some View {
-        ControlPanelView(grblController: grblController)
+        ControlPanelView(grblController: grblController, buttonManager: customButtonManager)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    private var settingsTabView: some View {
+        GrblSettingsView(grblController: grblController, settingsManager: settingsManager)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
@@ -172,7 +183,7 @@ struct SidebarView: View {
                 Button(action: { 
                     selectedTab = .importTab
                 }) {
-                    Label("Import Files", systemImage: "doc.badge.plus")
+                    Label("Import Image", systemImage: "photo")
                 }
                 .buttonStyle(.bordered)
             }
@@ -287,7 +298,7 @@ struct WelcomeView: View {
                 Button(action: { 
                     selectedTab = .importTab
                 }) {
-                    Label("Import Files", systemImage: "doc.badge.plus")
+                    Label("Import Image", systemImage: "photo")
                         .frame(width: 220)
                 }
                 .buttonStyle(.bordered)

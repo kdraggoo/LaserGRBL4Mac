@@ -23,13 +23,21 @@ struct UnifiedImportView: View {
     @State private var showingExportSheet = false
     @State private var conversionError: Error?
     
-    // File type detection
-    @State private var currentFileType: FileType = .none
-    
     enum FileType {
         case none
         case svg
         case image
+    }
+    
+    // Computed property to detect current file type based on environment state
+    private var currentFileType: FileType {
+        if imageImporter.currentImage != nil {
+            return .image
+        } else if svgImporter.currentDocument != nil {
+            return .svg
+        } else {
+            return .none
+        }
     }
     
     var body: some View {
@@ -354,16 +362,12 @@ struct UnifiedImportView: View {
     
     private func importSVG() async {
         await svgImporter.importSVG()
-        if svgImporter.currentDocument != nil {
-            currentFileType = .svg
-        }
+        // currentFileType is now automatically computed from environment state
     }
     
     private func importImage() async {
         await imageImporter.importImage()
-        if imageImporter.currentImage != nil {
-            currentFileType = .image
-        }
+        // currentFileType is now automatically computed from environment state
     }
     
     private func convertToGCode() async {

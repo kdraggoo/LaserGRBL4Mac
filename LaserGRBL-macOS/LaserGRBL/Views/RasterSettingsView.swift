@@ -91,6 +91,7 @@ struct RasterSettingsView: View {
                 }
             }
             .pickerStyle(.segmented)
+            .help("Line-to-Line: Fast horizontal scanning. Vectorize: Convert to vector paths (higher quality, slower).")
 
             Text(settings.conversionMode.description)
                 .font(.caption)
@@ -166,6 +167,7 @@ struct RasterSettingsView: View {
                         .foregroundColor(.secondary)
                 }
                 Slider(value: $settings.dpi, in: 50...1000, step: 1)
+                    .help(HelpSystem.shared.tooltip(for: "raster.dpi"))
                 Text("\(String(format: "%.3f", 25.4 / settings.dpi)) mm/pixel")
                     .font(.caption2)
                     .foregroundColor(.secondary)
@@ -181,6 +183,7 @@ struct RasterSettingsView: View {
                         .foregroundColor(.secondary)
                 }
                 Slider(value: $settings.lineInterval, in: 0.01...1.0, step: 0.01)
+                    .help(HelpSystem.shared.tooltip(for: "raster.lineInterval"))
             }
         }
     }
@@ -246,6 +249,7 @@ struct RasterSettingsView: View {
                 }
             }
             .pickerStyle(.menu)
+            .help(HelpSystem.shared.tooltip(for: "raster.dithering"))
 
             Text(settings.ditheringAlgorithm.description)
                 .font(.caption)
